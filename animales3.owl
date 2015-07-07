@@ -1,0 +1,265 @@
+@prefix : <http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix untitled-ontology-10: <http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#> .
+@base <http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10> .
+
+<http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Comer
+
+:Comer rdf:type owl:ObjectProperty ;
+       
+       rdfs:range :Animales ;
+       
+       rdfs:domain :Comida .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#ComerCarne
+
+:ComerCarne rdf:type owl:ObjectProperty ;
+            
+            rdfs:domain :Carnivoros ;
+            
+            rdfs:subPropertyOf :Comer ;
+            
+            rdfs:range :Comida .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#ComerNoCarne
+
+:ComerNoCarne rdf:type owl:ObjectProperty ;
+              
+              rdfs:subPropertyOf :Comer ;
+              
+              rdfs:range :Frutas ;
+              
+              rdfs:domain :Herbivoros ;
+              
+              rdfs:range :Verduras .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Calorias
+
+:Calorias rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :Comida ;
+          
+          rdfs:range xsd:double .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#especie
+
+:especie rdf:type owl:DatatypeProperty ;
+         
+         rdfs:domain :Animales ;
+         
+         rdfs:range xsd:string .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#nombre
+
+:nombre rdf:type owl:DatatypeProperty ;
+        
+        rdfs:domain :Animales ,
+                    :Comida ;
+        
+        rdfs:range xsd:string .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#peso
+
+:peso rdf:type owl:DatatypeProperty ;
+      
+      rdfs:domain :Animales ,
+                  :Comida ;
+      
+      rdfs:range xsd:double .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Animales
+
+:Animales rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Carnes
+
+:Carnes rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Comida .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Carnivoros
+
+:Carnivoros rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Animales .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Comida
+
+:Comida rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Frutas
+
+:Frutas rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Comida .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Herbivoros
+
+:Herbivoros rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Animales .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Verduras
+
+:Verduras rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Comida .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Arrachera
+
+:Arrachera rdf:type :Carnes ,
+                    owl:NamedIndividual ;
+           
+           :Calorias "250.0"^^xsd:double ;
+           
+           :peso "250.0"^^xsd:double ;
+           
+           :nombre "Arrachera"^^xsd:string .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Guacamaya
+
+:Guacamaya rdf:type :Herbivoros ,
+                    owl:NamedIndividual ;
+           
+           :peso "2.0"^^xsd:double ;
+           
+           :nombre "Guacamaya"^^xsd:string ;
+           
+           :ComerNoCarne :Manzana ,
+                         :Papa ,
+                         :Zanahoria .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Manzana
+
+:Manzana rdf:type :Frutas ,
+                  owl:NamedIndividual ;
+         
+         :peso "200.0"^^xsd:double ;
+         
+         :Calorias "30.0"^^xsd:double ;
+         
+         :nombre "Manzana"^^xsd:string .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Papa
+
+:Papa rdf:type :Verduras ,
+               owl:NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Perro
+
+:Perro rdf:type :Carnivoros ,
+                owl:NamedIndividual ;
+       
+       :nombre "Firulais"^^xsd:string ;
+       
+       :especie "Mamifero"^^xsd:string ;
+       
+       :ComerCarne :Arrachera ,
+                   :Guacamaya .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Platano
+
+:Platano rdf:type :Frutas ,
+                  owl:NamedIndividual ;
+         
+         :peso "180.0"^^xsd:double ;
+         
+         :Calorias "35.0"^^xsd:double ;
+         
+         :nombre "platano"^^xsd:double .
+
+
+
+###  http://www.semanticweb.org/lclap/ontologies/2015/5/untitled-ontology-10#Zanahoria
+
+:Zanahoria rdf:type :Verduras ,
+                    owl:NamedIndividual ;
+           
+           :Calorias "50.0"^^xsd:double ;
+           
+           :nombre "zanahoria"^^xsd:string .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+
